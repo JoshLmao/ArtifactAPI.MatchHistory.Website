@@ -24,6 +24,14 @@ $(() => {
         $("#filter_style").text(style_text);
     };
     regenerate_style();
+    /* Sort for Wins/Losses */
+    $("input[name=filter_outcome]").click(function () {
+        const val = $(this).val();
+        filter_outcome = val;
+        $(this).parent().parent().children().removeClass("active");
+        $(this).parent().addClass("active");
+        regenerate_style();
+    });
 
     // clear broken data
     for (let key in localStorage) {
@@ -46,8 +54,6 @@ $(() => {
         $table.append($tbody);
 
         let last_row_id = "";
-        let last_row_elem = null;
-        let last_row_summary = null;
 
         // Populate a row with the data
         const create_row = (data) => {
@@ -82,6 +88,7 @@ $(() => {
                 return;
             }
 
+            
             const outcome_el = match_outcome == team ? '<span class="win ml-1 font-weight-bold">WIN</span>' : '<span class="lose ml-1 font-weight-bold">LOSE</span>';
 
             const col1 = (`<td class="match text-right"><a href="https://www.opendota.com/matches/${match_id}" target="_blank">${match_id}</a> ${outcome_el}<br /><span class="gamemode mr-1">${match_mode}</span><span class="duration mr-1">${duration}</span><a class="opendota" href="https://www.opendota.com/matches/${match_id}" target="_blank">&lt;/&gt;</a> <a class="dotabuff" href="https://www.dotabuff.com/matches/${match_id}" target="_blank">D</a> <a class="stratz" href="https://stratz.com/en-us/match/${match_id}" target="_blank">⇑</a><br />${start_time}</td>`);
@@ -100,25 +107,17 @@ $(() => {
 
             class2 = "data_unknown";
 
-            if (false) {
-                last_row_summary.append("<hr />");
-                last_row_summary.append(summary);
-                last_row_elem.addClass(class1);
-                last_row_elem.addClass(class2);
-            } else {
-                const $tr = $(`<tr class="match_row ${class1} ${class2}"></tr>`);
-                const $col1 = $(col1);
-                const $col2 = $(col2);
-                const $col3 = $(col3);
-                $tr.append($col1);
-                $tr.append($col2);
-                $tr.append($col3);
-                last_row_id = match_id;
-                last_row_elem = $tr;
-                last_row_summary = $col3;
-                $tbody.append($tr);
-            }
-            
+            const $tr = $(`<tr class="match_row ${class1} ${class2}"></tr>`);
+            const $col1 = $(col1);
+            const $col2 = $(col2);
+            const $col3 = $(col3);
+            $tr.append($col1);
+            $tr.append($col2);
+            $tr.append($col3);
+            last_row_id = match_id;
+            last_row_elem = $tr;
+            last_row_summary = $col3;
+            $tbody.append($tr);
         };
 
         const formatDuration = (seconds) => {
@@ -157,28 +156,28 @@ $(() => {
             /*Parse a row of data into vars*/
             const parsed_row = row.split("|");
             const match_id = parsed_row[0];
-            const accountId = parsed_row[1];
-            const matchMode = parsed_row[2];
+            const account_id = parsed_row[1];
+            const match_mode = parsed_row[2];
             const duration = parsed_row[3];
-            const serverVersion = parsed_row[4];
-            const matchOutcome = parsed_row[5];
-            const totalTurns = parsed_row[6];
-            const startTime = parsed_row[7];
-            const clusterId = parsed_row[8];
+            const server_version = parsed_row[4];
+            const match_outcome = parsed_row[5];
+            const total_turns = parsed_row[6];
+            const start_time = parsed_row[7];
+            const cluster_id = parsed_row[8];
             const team = parsed_row[9];
             const flags = parsed_row[10];
             const tower1 = parsed_row[11];
             const tower2 = parsed_row[12];
             const tower3 = parsed_row[13];
             const ancient = parsed_row[14];
-            const gameClock = parsed_row[15];
-            const hero1 = parsed_row[16];
-            const hero2 = parsed_row[17];
-            const hero3 = parsed_row[18];
-            const hero4 = parsed_row[19];
-            const hero5 = parsed_row[20];
-            const gauntletType = parsed_row[21];
-            const deckCode = parsed_row[22];
+            const game_clock = parsed_row[15];
+            const hero_1 = parsed_row[16];
+            const hero_2 = parsed_row[17];
+            const hero_3 = parsed_row[18];
+            const hero_4 = parsed_row[19];
+            const hero_5 = parsed_row[20];
+            const gauntlet_type = parsed_row[21];
+            const deck_code = parsed_row[22];
 
             if (isNaN(parseInt(match_id))) {
                 return;
@@ -186,27 +185,28 @@ $(() => {
 
             create_row({
                     match_id,
-                    matchMode,
+                    account_id,
+                    match_mode,
                     duration,
-                    serverVersion,
-                    matchOutcome,
-                    totalTurns,
-                    startTime,
-                    clusterId,
+                    server_version,
+                    match_outcome,
+                    total_turns,
+                    start_time,
+                    cluster_id,
                     team,
                     flags,
                     tower1,
                     tower2,
                     tower3,
                     ancient,
-                    gameClock,
-                    hero1,
-                    hero2,
-                    hero3,
-                    hero4,
-                    hero5,
-                    gauntletType,
-                    deckCode,
+                    game_clock,
+                    hero_1,
+                    hero_2,
+                    hero_3,
+                    hero_4,
+                    hero_5,
+                    gauntlet_type,
+                    deck_code,
                 });
 
             setTimeout(() => { 
