@@ -55,6 +55,31 @@ $(() => {
 
         let last_row_id = "";
 
+        const modeToDisplayName = (mode) => {
+            switch(mode){
+                case "2":
+                    return "Matchmaking";
+                case "3":
+                    return "Gauntlet";
+                case "8":
+                    return "Bot Match"
+                default:
+                    return "Unknown";
+            }
+        }
+
+        const getTowerImg = (towerHealth) => {
+            return towerHealth === "0" ? "images/tower_destroyed.png" :"images/tower.png";
+        }
+
+        const getHeroIcon = (heroName) => {
+            if(heroName === ""){
+                return "images/unknown_hero.png";
+            } else {
+                return "images/unknown_hero.png";
+            }
+        }
+
         // Populate a row with the data
         const create_row = (data) => {
             const {
@@ -88,15 +113,38 @@ $(() => {
                 return;
             }
 
-            
-            const outcome_el = match_outcome == team ? '<span class="win ml-1 font-weight-bold">WIN</span>' : '<span class="lose ml-1 font-weight-bold">LOSE</span>';
+            let accountName = decodeURI(account_id);
+            let matchMode = modeToDisplayName(match_mode);
+            let startTime = decodeURI(start_time);
+            /* Set win or loss*/
+            let outcomeClass = match_outcome == team ? "winDiv" : "loseDiv";
 
-            const col1 = (`<td class="match text-right"><a href="https://www.opendota.com/matches/${match_id}" target="_blank">${match_id}</a> ${outcome_el}<br /><span class="gamemode mr-1">${match_mode}</span><span class="duration mr-1">${duration}</span><a class="opendota" href="https://www.opendota.com/matches/${match_id}" target="_blank">&lt;/&gt;</a> <a class="dotabuff" href="https://www.dotabuff.com/matches/${match_id}" target="_blank">D</a> <a class="stratz" href="https://stratz.com/en-us/match/${match_id}" target="_blank">⇑</a><br />${start_time}</td>`);
+            /* Set the right images for towers and ancient*/
+            let towerOneImg = getTowerImg(tower1);
+            let towerTwoImg = getTowerImg(tower2);
+            let towerThreeImg = getTowerImg(tower3);
+            let ancientImg = ancient === "0" ? "images/ancient_destroyed.png" : "images/ancient.png";
+
+            /* Get hero icons for heroes*/
+            let heroOneIcon = getHeroIcon(hero_1);
+            let heroTwoIcon = getHeroIcon(hero_2);
+            let heroThreeIcon = getHeroIcon(hero_3);
+            let heroFourIcon = getHeroIcon(hero_4);
+            let heroFiveIcon = getHeroIcon(hero_5);
+
+            const col1  = (`<td><div class="${outcomeClass}"></div></td>`);
+            const col2 = (`<td><br/><div>${match_id}<br/>${matchMode}</div></td>`);
+            const col3 = (`<td><p>${accountName}<br/>${startTime}<br/>Surrendered</p></td>`);
+            const col4 = (`<td><div class="buildingContainer"> <div class="element"> <img src="${towerOneImg}" id="bElement" /> <p id="bElementText">${tower1}</p> </div> <div class="element"> <img src="${towerTwoImg}" id="bElement" /> <p id="bElementText">${tower2}</p> </div> <div class="element"> <img src="${towerThreeImg}" id="bElement" /> <p id="bElementText">${tower3}</p> </div> <div class="element"> <img src="${ancientImg}" id="bElement" /> <p id="bElementText">${ancient}</p> </div></div></td>`);
+            const col5 = (`<td><div class="towersContainer"> <img src="${heroOneIcon}" id="heroIcon"/> <img src="${heroTwoIcon}" id="heroIcon"/> <img src="${heroThreeIcon}" id="heroIcon"/> <img src="${heroFourIcon}" id="heroIcon"/> <img src="${heroFiveIcon}" id="heroIcon" /></div></td>`);
+            /*const col1 = (`<td class="match text-right"><a href="https://www.opendota.com/matches/${match_id}" target="_blank">${match_id}</a> ${outcome_el}<br /><span class="gamemode mr-1">${match_mode}</span><span class="duration mr-1">${duration}</span><a class="opendota" href="https://www.opendota.com/matches/${match_id}" target="_blank">&lt;/&gt;</a> <a class="dotabuff" href="https://www.dotabuff.com/matches/${match_id}" target="_blank">D</a> <a class="stratz" href="https://stratz.com/en-us/match/${match_id}" target="_blank">⇑</a><br />${start_time}</td>`);
             const col2 = (`<td class="icon pb-1 text-center"><img class="mb-1 mt-1" src="${hero_1}" height="30"><br /><span class="score_k">${tower1}</span><span class="kda_spacer">/</span><span class="score_d">${tower2}</span><span class="kda_spacer">/</span><span class="score_a">${tower3}</span></td>`);
+            */
             let summary_list = [];
             
             let summary = summary_list.join("<br />");
-            const col3 = (`<td class="summary">${match_id}</td>`);
+            /*const col3 = (`<td class="summary">${match_id}</td>`);
+            */
 
             let class1 = "outcome_unknown";
             if (match_outcome == team) {
@@ -111,9 +159,15 @@ $(() => {
             const $col1 = $(col1);
             const $col2 = $(col2);
             const $col3 = $(col3);
+            const $col4 = $(col4);
+            const $col5 = $(col5);
+
             $tr.append($col1);
             $tr.append($col2);
             $tr.append($col3);
+            $tr.append($col4);
+            $tr.append($col5);
+
             last_row_id = match_id;
             last_row_elem = $tr;
             last_row_summary = $col3;
