@@ -114,6 +114,29 @@ $(() => {
             }
         }
 
+        const teamToName = (team) => {
+            switch(team)
+            {
+                case "0":
+                    return "Radiant";
+                case "1":
+                    return "Dire";
+                default:
+                    return null;
+            }
+        }
+
+        const timeToDisplay = (totalSeconds) => {
+            let tSeconds = parseInt(totalSeconds);
+            if(tSeconds == 0)
+                return "0 seconds";
+            
+            let minutesDiv = Math.floor(tSeconds / 60);
+            tSeconds -= (minutesDiv * 60);
+
+            return `${minutesDiv} min(s) ${tSeconds} sec(s)`;
+        }
+
         // Populate a row with the data
         const create_row = (data) => {
             const {
@@ -175,14 +198,39 @@ $(() => {
             let heroFourIcon = getHeroIcon(hero_4);
             let heroFiveIcon = getHeroIcon(hero_5);
 
+            let teamName = teamToName(team);
+            let totalTime = timeToDisplay(game_clock);
+
             const col1 = (`<td class="align-middle"><div class="${outcomeClass}"/></td>`);
             const col2 = (`<td class="align-middle"><div class="text-left"><div>${match_id}</div><div>${matchMode}</div>${gauntletModeHtml}</div></td>`);
-            const col3 = (`<td class="align-middle"><div class="text-left">${accountName}<br/>${startTime}${flagsHtml}</p></td>`);
+            /*Correctly align the first section if there's the flag text*/
+            let col3align = flagsDisplayName != null ? "vertical-align:0%;" : "vertical-align:50%;";
+            const col3 = (`<td class="align-middle">
+            <div class="buildingContainer">
+            <div class="element text-left" style="margin-right:5px;${col3align}">
+                ${accountName}
+                <br/> 
+                ${startTime}
+                ${flagsHtml}
+            </div>
+            <div class="element text-left" style="margin-right:5px;vertical-align:50%;">
+                Team: ${teamName}
+                <br/>
+                Duration: ${duration}
+            </div>
+            <div class="element text-left" style="margin-right:5px;vertical-align:50%;">
+                Turns: ${total_turns}
+                <br/>
+                Turn Time Left: ${totalTime}
+            </div>
+            </div>
+            
+          </td>`);
+
+
+
             const col4 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><div class="element "><img src="${towerOneImg}" id="bElement" /> <p id="bElementText">${tower1}</p> </div> <div class="element"> <img src="${towerTwoImg}" id="bElement" /> <p id="bElementText">${tower2}</p> </div> <div class="element"> <img src="${towerThreeImg}" id="bElement" /> <p id="bElementText">${tower3}</p> </div> <div class="element"> <img src="${ancientImg}" id="bElement" /> <p id="bElementText">${ancient}</p> </div></div></td>`);
             const col5 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><img src="${heroOneIcon}" id="heroIcon"/> <img src="${heroTwoIcon}" id="heroIcon"/> <img src="${heroThreeIcon}" id="heroIcon"/> <img src="${heroFourIcon}" id="heroIcon"/> <img src="${heroFiveIcon}" id="heroIcon" /></div></td>`);
-            /*const col1 = (`<td class="match text-right"><a href="https://www.opendota.com/matches/${match_id}" target="_blank">${match_id}</a> ${outcome_el}<br /><span class="gamemode mr-1">${match_mode}</span><span class="duration mr-1">${duration}</span><a class="opendota" href="https://www.opendota.com/matches/${match_id}" target="_blank">&lt;/&gt;</a> <a class="dotabuff" href="https://www.dotabuff.com/matches/${match_id}" target="_blank">D</a> <a class="stratz" href="https://stratz.com/en-us/match/${match_id}" target="_blank">⇑</a><br />${start_time}</td>`);
-            const col2 = (`<td class="icon pb-1 text-center"><img class="mb-1 mt-1" src="${hero_1}" height="30"><br /><span class="score_k">${tower1}</span><span class="kda_spacer">/</span><span class="score_d">${tower2}</span><span class="kda_spacer">/</span><span class="score_a">${tower3}</span></td>`);
-            */
             let summary_list = [];
             
             let summary = summary_list.join("<br />");
