@@ -1,29 +1,95 @@
 $(() => {
+
     /*Select all script text when selecting text area*/
     $("#script_box").click(() => {
         $("#script_box").select();
     });
 
     let filter_outcome = "all";
+    let filter_matchType = "all";
 
     const regenerate_style = () => {
 
         let style_text = ".match_row { display: none; } ";
-        
-        if (filter_outcome === "win") {
-            style_text += `.outcome_win { display: table-row; } `;
-        } else if (filter_outcome === "lose") {
-            style_text += `.outcome_lose { display: table-row; } `;
-        } else {
-            style_text += `.data_unknown { display: table-row; } `;
-            style_text += `.outcome_unknown { display: table-row; } `;
-            style_text += `.outcome_win { display: table-row; } `;
-            style_text += `.outcome_lose { display: table-row; } `;
+        if (filter_outcome === "win") 
+        {
+            if( filter_matchType == "matchmaking" ) {
+                style_text += `.outcome_win.match_matchmaking { display: table-row; } `;
+            } else if ( filter_matchType == "botMatch") {
+                style_text += `.outcome_win.match_bots { display: table-row; } `;
+            } else if ( filter_matchType == "callToArms" ) {
+                style_text += `.outcome_win.match_callToArms { display: table-row; } `;
+            } else if ( filter_matchType == "expConstructed" ) {
+                style_text += `.outcome_win.match_expertC { display: table-row; } `;
+            } else if ( filter_matchType == "exppd" ) {
+                style_text += `.outcome_win.match_expertPD { display: table-row; } `;
+            } else if ( filter_matchType == "expkd" ) {
+                style_text += `.outcome_win.match_expertKD { display: table-row; } `;
+            } else if ( filter_matchType == "constructed" ) {
+                style_text += `.outcome_win.match_contructed { display: table-row; } `;
+            } else if ( filter_matchType == "pd" ) {
+                style_text += `.outcome_win.match_phantomDraft { display: table-row; } `;
+            } 
+        } 
+        else if (filter_outcome === "lose") 
+        {
+            if( filter_matchType == "matchmaking" ) {
+                style_text += `.outcome_lose.match_matchmaking { display: table-row; } `;
+            } else if ( filter_matchType == "botMatch") {
+                style_text += `.outcome_lose.match_bots { display: table-row; } `;
+            } else if ( filter_matchType == "callToArms" ) {
+                style_text += `.outcome_lose.match_callToArms { display: table-row; } `;
+            } else if ( filter_matchType == "expConstructed" ) {
+                style_text += `.outcome_lose.match_expertC { display: table-row; } `;
+            } else if ( filter_matchType == "exppd" ) {
+                style_text += `.outcome_lose.match_expertPD { display: table-row; } `;
+            } else if ( filter_matchType == "expkd" ) {
+                style_text += `.outcome_lose.match_expertKD { display: table-row; } `;
+            } else if ( filter_matchType == "constructed" ) {
+                style_text += `.outcome_lose.match_contructed { display: table-row; } `;
+            } else if ( filter_matchType == "pd" ) {
+                style_text += `.outcome_lose.match_phantomDraft { display: table-row; } `;
+            }
+        } 
+        else 
+        {
+            if( filter_matchType == "matchmaking" ) {
+                style_text += `.match_matchmaking { display: table-row; } `;
+            } else if ( filter_matchType == "botMatch") {
+                style_text += `.match_bots { display: table-row; } `;
+            } else if ( filter_matchType == "callToArms" ) {
+                style_text += `.match_callToArms { display: table-row; } `;
+            } else if ( filter_matchType == "expConstructed" ) {
+                style_text += `.match_expertC { display: table-row; } `;
+            } else if ( filter_matchType == "exppd" ) {
+                style_text += `.match_expertPD { display: table-row; } `;
+            } else if ( filter_matchType == "expkd" ) {
+                style_text += `.match_expertKD { display: table-row; } `;
+            } else if ( filter_matchType == "constructed" ) {
+                style_text += `.match_contructed { display: table-row; } `;
+            } else if ( filter_matchType == "pd" ) {
+                style_text += `.match_phantomDraft { display: table-row; } `;
+            }    
+            else {
+                style_text += `.match_matchmaking { display: table-row; } `;
+                style_text += `.match_bots { display: table-row; } `;
+                style_text += `.match_unknown { display: table-row; } `;
+                style_text += `.match_callToArms { display: table-row; } `;
+                style_text += `.match_expertC { display: table-row; } `;
+                style_text += `.match_expertPD { display: table-row; } `;
+                style_text += `.match_expertKD { display: table-row; } `;
+                style_text += `.match_contructed { display: table-row; } `;
+                style_text += `.match_phantomDraft { display: table-row; } `;
+            }     
         }
+
+        
+
         
         $("#filter_style").text(style_text);
     };
     regenerate_style();
+
     /* Sort for Wins/Losses */
     $("input[name=filter_outcome]").click(function () {
         const val = $(this).val();
@@ -33,10 +99,14 @@ $(() => {
         regenerate_style();
     });
 
-    // clear broken data
-    for (let key in localStorage) {
-        if (key.startsWith("match-")) localStorage.removeItem(key);
-    }
+    $("input[name=filter_matchType]").click(function () {
+        const val = $(this).val();
+        filter_matchType = val;
+        console.log(filter_matchType);
+        $(this).parent().parent().children().removeClass("active");
+        $(this).parent().addClass("active");
+        regenerate_style();
+    });
 
     if (location.hash && location.hash !== "#") 
     {
@@ -227,8 +297,6 @@ $(() => {
             
           </td>`);
 
-
-
             const col4 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><div class="element "><img src="${towerOneImg}" id="bElement" /> <p id="bElementText">${tower1}</p> </div> <div class="element"> <img src="${towerTwoImg}" id="bElement" /> <p id="bElementText">${tower2}</p> </div> <div class="element"> <img src="${towerThreeImg}" id="bElement" /> <p id="bElementText">${tower3}</p> </div> <div class="element"> <img src="${ancientImg}" id="bElement" /> <p id="bElementText">${ancient}</p> </div></div></td>`);
             const col5 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><img src="${heroOneIcon}" id="heroIcon"/> <img src="${heroTwoIcon}" id="heroIcon"/> <img src="${heroThreeIcon}" id="heroIcon"/> <img src="${heroFourIcon}" id="heroIcon"/> <img src="${heroFiveIcon}" id="heroIcon" /></div></td>`);
             let summary_list = [];
@@ -242,7 +310,28 @@ $(() => {
                 class1 = "outcome_lose";
             }
 
-            const $tr = $(`<tr class="match_row ${class1}"></tr>`);
+            let class2 = "match_unknown";
+            if ( match_mode == 2 ) {
+                class2 = "match_matchmaking";
+            } else if ( match_mode == 8 ) {
+                class2 = "match_bots";
+            } else if ( match_mode == 3 ) {
+                if ( gauntlet_type == 5 ) {
+                    class2 = "match_callToArms";
+                } else if ( gauntlet_type == 7 ) {
+                    class2 = "match_expertC";
+                } else if ( gauntlet_type == 8 ) {
+                    class2 = "match_expertPD";
+                } else if ( gauntlet_type == 9 ) {
+                    class2 = "match_expertKD";
+                } else if( gauntlet_type == 10 ) {
+                    class2 = "match_contructed";
+                } else if ( gauntlet_type == 11 ) {
+                    class2 = "match_phantomDraft";
+                }
+            }
+
+            const $tr = $(`<tr class="match_row ${class1} ${class2}"></tr>`);
             const $col1 = $(col1);
             const $col2 = $(col2);
             const $col3 = $(col3);
@@ -257,7 +346,6 @@ $(() => {
 
             last_row_id = match_id;
             last_row_elem = $tr;
-            last_row_summary = $col3;
             $tbody.append($tr);
         };
 

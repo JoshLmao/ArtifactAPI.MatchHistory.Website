@@ -163,6 +163,59 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title float-left" id="output_title"></div>
+
+                <div class="float-right">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <!--All matches-->
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_all" value="all" checked>
+                                   All
+                        </label>
+                        <!--Normal Matchmaking-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_matchmaking" value="matchmaking"> 
+                                   Matchmaking
+                        </label>
+                        <!--Bot Matches-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_botMatch" value="botMatch"> 
+                                   BotMatch
+                        </label>
+                        <!--Gauntlets-->
+                        <!--Call to Arms-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_c2a" value="callToArms"> 
+                                    Call to Arms
+                        </label>
+                        <!--Expert Constructed-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expConst" value="expConstructed"> 
+                                    Expert Constructed
+                        </label>
+                        <!--Expert Phantom's Draft-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_exppd" value="exppd"> 
+                                    Expert Phantom's Draft
+                        </label>
+                        <!--Expert Keeper's Draft-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expkd" value="expkd"> 
+                                    Expert Keeper's Draft
+                        </label>
+                        <!--Constructed-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_const" value="constructed"> 
+                                     Constructed
+                        </label>
+                        <!--Casual Phantoms Draft-->
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_pd" value="pd"> 
+                                    Phantom's Draft
+                        </label>
+                    </div>
+                </div>
+                <h5 id="filter_title" class="card-title float-right mr-3">Match Modes:</h5>
+
                 <div class="float-right mr-3">
                     <!--Matches Result filter buttons-->
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
