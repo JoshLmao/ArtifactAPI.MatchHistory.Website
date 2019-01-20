@@ -80,6 +80,40 @@ $(() => {
             }
         }
 
+        const getGauntletMode = (gauntletType) => {
+            switch(gauntletType){
+                case "0":
+                    return null;
+                case "5":
+                    return "Call to Arms";
+                case "7":
+                    return "Expert Constructed";
+                case "8":
+                    return "Expert Phantom's Draft";
+                case "9":
+                    return "Expert Keeper's Draft";
+                case "10":
+                    return "Constructed";
+                case "11":
+                    return "Casual Phantom Draft";
+                default:
+                    return null;
+            }
+        }
+
+        const getFlagsToName = (flags) => {
+            switch(flags){
+                case "0":
+                    return null;
+                case "1":
+                    return "Surrendered";
+                case "2":
+                    return "Abandoned";
+                default:
+                    return null;
+            }
+        }
+
         // Populate a row with the data
         const create_row = (data) => {
             const {
@@ -116,8 +150,17 @@ $(() => {
             let accountName = decodeURI(account_id);
             let matchMode = modeToDisplayName(match_mode);
             let startTime = decodeURI(start_time);
+            
             /* Set win or loss*/
             let outcomeClass = match_outcome == team ? "winDiv" : "loseDiv";
+            
+            /*Get Gauntlet Mode display name & HTML*/
+            let gauntletMode = getGauntletMode(gauntlet_type);
+            let gauntletModeHtml = gauntletMode != null ? `<div>${gauntletMode}</div>` : "";
+            
+            /*Determine if game was surrendered or not*/
+            let flagsDisplayName = getFlagsToName(flags);
+            let flagsHtml = flagsDisplayName != null ? `<div style="color:red;">${flagsDisplayName}</div>` : "";
 
             /* Set the right images for towers and ancient*/
             let towerOneImg = getTowerImg(tower1);
@@ -132,19 +175,17 @@ $(() => {
             let heroFourIcon = getHeroIcon(hero_4);
             let heroFiveIcon = getHeroIcon(hero_5);
 
-            const col1  = (`<td><div class="${outcomeClass}"></div></td>`);
-            const col2 = (`<td><br/><div>${match_id}<br/>${matchMode}</div></td>`);
-            const col3 = (`<td><p>${accountName}<br/>${startTime}<br/>Surrendered</p></td>`);
-            const col4 = (`<td><div class="buildingContainer"> <div class="element"> <img src="${towerOneImg}" id="bElement" /> <p id="bElementText">${tower1}</p> </div> <div class="element"> <img src="${towerTwoImg}" id="bElement" /> <p id="bElementText">${tower2}</p> </div> <div class="element"> <img src="${towerThreeImg}" id="bElement" /> <p id="bElementText">${tower3}</p> </div> <div class="element"> <img src="${ancientImg}" id="bElement" /> <p id="bElementText">${ancient}</p> </div></div></td>`);
-            const col5 = (`<td><div class="towersContainer"> <img src="${heroOneIcon}" id="heroIcon"/> <img src="${heroTwoIcon}" id="heroIcon"/> <img src="${heroThreeIcon}" id="heroIcon"/> <img src="${heroFourIcon}" id="heroIcon"/> <img src="${heroFiveIcon}" id="heroIcon" /></div></td>`);
+            const col1 = (`<td class="align-middle"><div class="${outcomeClass}"/></td>`);
+            const col2 = (`<td class="align-middle"><div class="text-left"><div>${match_id}</div><div>${matchMode}</div>${gauntletModeHtml}</div></td>`);
+            const col3 = (`<td class="align-middle"><div class="text-left">${accountName}<br/>${startTime}${flagsHtml}</p></td>`);
+            const col4 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><div class="element "><img src="${towerOneImg}" id="bElement" /> <p id="bElementText">${tower1}</p> </div> <div class="element"> <img src="${towerTwoImg}" id="bElement" /> <p id="bElementText">${tower2}</p> </div> <div class="element"> <img src="${towerThreeImg}" id="bElement" /> <p id="bElementText">${tower3}</p> </div> <div class="element"> <img src="${ancientImg}" id="bElement" /> <p id="bElementText">${ancient}</p> </div></div></td>`);
+            const col5 = (`<td class="align-middle"><div class="buildingContainer text-center align-middle"><img src="${heroOneIcon}" id="heroIcon"/> <img src="${heroTwoIcon}" id="heroIcon"/> <img src="${heroThreeIcon}" id="heroIcon"/> <img src="${heroFourIcon}" id="heroIcon"/> <img src="${heroFiveIcon}" id="heroIcon" /></div></td>`);
             /*const col1 = (`<td class="match text-right"><a href="https://www.opendota.com/matches/${match_id}" target="_blank">${match_id}</a> ${outcome_el}<br /><span class="gamemode mr-1">${match_mode}</span><span class="duration mr-1">${duration}</span><a class="opendota" href="https://www.opendota.com/matches/${match_id}" target="_blank">&lt;/&gt;</a> <a class="dotabuff" href="https://www.dotabuff.com/matches/${match_id}" target="_blank">D</a> <a class="stratz" href="https://stratz.com/en-us/match/${match_id}" target="_blank">⇑</a><br />${start_time}</td>`);
             const col2 = (`<td class="icon pb-1 text-center"><img class="mb-1 mt-1" src="${hero_1}" height="30"><br /><span class="score_k">${tower1}</span><span class="kda_spacer">/</span><span class="score_d">${tower2}</span><span class="kda_spacer">/</span><span class="score_a">${tower3}</span></td>`);
             */
             let summary_list = [];
             
             let summary = summary_list.join("<br />");
-            /*const col3 = (`<td class="summary">${match_id}</td>`);
-            */
 
             let class1 = "outcome_unknown";
             if (match_outcome == team) {
@@ -153,9 +194,7 @@ $(() => {
                 class1 = "outcome_lose";
             }
 
-            class2 = "data_unknown";
-
-            const $tr = $(`<tr class="match_row ${class1} ${class2}"></tr>`);
+            const $tr = $(`<tr class="match_row ${class1}"></tr>`);
             const $col1 = $(col1);
             const $col2 = $(col2);
             const $col3 = $(col3);
