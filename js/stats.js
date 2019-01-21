@@ -7,7 +7,7 @@ statistics.getPercent = function (amount, total, decimalPlace) {
     
     var percent = (amount / total) * 100;
     if ( isNaN(percent) )
-        return 0;
+        return 0 + "%";
     else
         return percent.toFixed(decimalPlace) + "%";
 }
@@ -60,22 +60,22 @@ statistics.getTotalWinRate = function (matches) {
     return statistics.getPercent(wonMatches, matches.length);
 }
 
-statistics.getMMGamesCount = function (matches) {
-    var matchCount = 0;
+
+statistics.getMatchTypeGames = function (matches, typeNumber) {
+    var allMatchingGames = [ ];
     for(var i = 0;i < matches.length; i++) {
-        if ( matches[i].mode == "2" ){
-            matchCount++;
+        if ( matches[i].mode == typeNumber ) {
+            allMatchingGames.push(matches[i]);
         }
     }
-    return matchCount;
+    return allMatchingGames;
 }
 
-/* Gets win rate for all matchmaking games*/
-statistics.getMatchmakingWinRate = function (matches) {
+statistics.getMatchTypeWinRate = function (matches, typeNumber) {
     var matchCount = 0;
     var wonMatches = 0;
     for(var i = 0;i < matches.length; i++) {
-        if ( matches[i].mode == "2" ){
+        if ( matches[i].mode == typeNumber ){
             matchCount++;
             if( matches[i].outcome == matches[i].team) {
                 wonMatches++;
@@ -83,4 +83,14 @@ statistics.getMatchmakingWinRate = function (matches) {
         }
     }
     return statistics.getPercent(wonMatches, matchCount);
+}
+
+statistics.getTeamGames = function (matches, team) {
+    var teamGames = [];
+    for( var i = 0; i < matches.length; i++ ) {
+        if ( matches[i].team == team ) {
+            teamGames.push(matches[i]);
+        }
+    }
+    return teamGames;
 }

@@ -13,37 +13,50 @@ $(() => {
     }
 
     const setGlobalStats = (currentMatches) => {
-        var totalMatchesCount = currentMatches.length;
         var totalMatchesWinRate = statistics.getTotalWinRate(currentMatches);
-        setStat("#life_totalGames", totalMatchesCount);
+        setStat("#life_totalGames", currentMatches.length);
         setStat("#life_totalGamesWR", totalMatchesWinRate);
 
-        var totalMMGames = statistics.getMMGamesCount(currentMatches);
-        var totalMMWonGames = statistics.getMatchmakingWinRate(currentMatches);
-        setStat("#life_totalMM", totalMMGames);
+        var totalMMGames = statistics.getMatchTypeGames(currentMatches, "2");
+        var totalMMWonGames = statistics.getMatchTypeWinRate(currentMatches, "2");
+        setStat("#life_totalMM", totalMMGames.length);
         setStat("#life_totalMMWR", totalMMWonGames);
+
+        var allGauntlets = statistics.getMatchTypeGames(currentMatches, "3");
+        var totalGauntletWR = statistics.getMatchTypeWinRate(currentMatches, "3");
+        setStat("#life_totalGau", allGauntlets.length);
+        setStat("#life_totalGauWR", totalGauntletWR);
+
+        var allBots = statistics.getMatchTypeGames(currentMatches, "8");
+        var allBotsWR = statistics.getMatchTypeWinRate(allBots, "8");
+        setStat("#life_totalBM", allBots.length);
+        setStat("#life_totalBMWR", allBotsWR);
     }
 
-    const setCasualStats = (casualMatches) => {
-        var casualWinRate = statistics.getTotalWinRate(casualMatches);
-        setStat("#cas_totalGames", casualMatches.length);
-        setStat("#cas_totalWR", casualWinRate);
-    }
+    const setSharedStats = (matches, prefix) => {
+        var totalWR = statistics.getTotalWinRate(matches);
+        setStat(`#${prefix}_totalGames`, matches.length);
+        setStat(`#${prefix}_totalWR`, totalWR);
 
-    const setExpertStats = (expertMatches) => {
-        var totalExpertCount = expertMatches.length;
-        setStat("#exp_totalGames", totalExpertCount);
-        setStat("#exp_totalWR", "3");
+        var allRadiant = statistics.getTeamGames(matches, "0");
+        var rWR = statistics.getTotalWinRate(allRadiant);
+        setStat(`#${prefix}_rGames`, allRadiant.length);
+        setStat(`#${prefix}_rWR`, rWR);
+
+        var allDire = statistics.getTeamGames(matches, "1");
+        var dWR = statistics.getTotalWinRate(allDire);
+        setStat(`#${prefix}_dGames`, allDire.length);
+        setStat(`#${prefix}_dWR`, dWR);
     }
 
     const setStats = (currentMatches) => {
         setGlobalStats(currentMatches);
 
         var casualMatches = statistics.getCasualMatches(currentMatches);
-        setCasualStats(casualMatches);
+        setSharedStats(casualMatches, "cas");
 
         var expertMatches = statistics.getExpertMatches(currentMatches);
-        setExpertStats(expertMatches);
+        setSharedStats(expertMatches, "exp");
     }
 
     const regenerate_style = () => {
