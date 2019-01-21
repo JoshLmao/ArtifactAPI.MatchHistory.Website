@@ -70,86 +70,149 @@
     <div id="output" style="display: none" class="mt-3">
         <div class="card">
             <div class="card-body">
-                <div class="card-title float-left" id="output_title"></div>
-
-                <div class="float-right">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <!--All matches-->
-                        <label class="btn btn-secondary active">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_all" value="all" checked>
-                                   All
-                        </label>
-                        <!--Normal Matchmaking-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_matchmaking" value="matchmaking"> 
-                                   Matchmaking
-                        </label>
-                        <!--Bot Matches-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_botMatch" value="botMatch"> 
-                                   BotMatch
-                        </label>
-                        <!--Gauntlets-->
-                        <!--Call to Arms-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_c2a" value="callToArms"> 
-                                    Call to Arms
-                        </label>
-                        <!--Expert Constructed-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expConst" value="expConstructed"> 
-                                    Expert Constructed
-                        </label>
-                        <!--Expert Phantom's Draft-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_exppd" value="exppd"> 
-                                    Expert Phantom's Draft
-                        </label>
-                        <!--Expert Keeper's Draft-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expkd" value="expkd"> 
-                                    Expert Keeper's Draft
-                        </label>
-                        <!--Constructed-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_const" value="constructed"> 
-                                     Constructed
-                        </label>
-                        <!--Casual Phantoms Draft-->
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_pd" value="pd"> 
-                                    Phantom's Draft
-                        </label>
+                <div class="container-fluid">
+                    <!--Title row-->
+                    <div class="row">
+                        <div class="card-title float-left" id="output_title"></div>
+                    </div>
+                    <!--Stats row-->
+                    <div class="row">
+                        <h4>Lifetime Stats</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th data-field="overview">Overview</th>
+                                    <th data-field="matches">Matches</th>
+                                    <th data-field="win_rate">Win Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Games</td>
+                                    <td id="life_totalGames">22</td>
+                                    <td id="life_totalGamesWR">0%</td>
+                                </tr>
+                                <tr>
+                                    <td>Matchmaking</td>
+                                    <td>12</td>
+                                    <td>0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--Casual & Expert stats-->
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4>Casual Stats</h4>
+                            <table class="table">
+                                <thead>
+                                    <th data-field="overview">Overview</th>
+                                    <th data-field="matches">Matches</th>
+                                    <th data-field="win_rate">Win Rate</th> 
+                                </thead>
+                                <tbody>
+                                    <td>Total Games</td>
+                                    <td>22</td>
+                                    <td>0%</td>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm">
+                            <h4>Expert Stats</h4>
+                            <table class="table">
+                                <thead>
+                                    <th data-field="overview">Overview</th>
+                                    <th data-field="matches">Matches</th>
+                                    <th data-field="win_rate">Win Rate</th> 
+                                </thead>
+                                <tbody>
+                                    <td>Total Games</td>
+                                    <td>22</td>
+                                    <td>0%</td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+                    <!--Match Mode filter row-->
+                    <div class="row">
+                        <h5 id="filter_title" class="card-title float-right mr-3">Modes:</h5>
+                        <div class="float-left">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <!--All matches-->
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_all" value="all" checked>
+                                            All
+                                </label>
+                                <!--Normal Matchmaking-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_matchmaking" value="matchmaking"> 
+                                            Matchmaking
+                                </label>
+                                <!--Bot Matches-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_botMatch" value="botMatch"> 
+                                            BotMatch
+                                </label>
+                                <!--Gauntlets-->
+                                <!--Call to Arms-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_c2a" value="callToArms"> 
+                                            Call to Arms
+                                </label>
+                                <!--Expert Constructed-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expConst" value="expConstructed"> 
+                                            Expert Constructed
+                                </label>
+                                <!--Expert Phantom's Draft-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_exppd" value="exppd"> 
+                                            Expert Phantom's Draft
+                                </label>
+                                <!--Expert Keeper's Draft-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_expkd" value="expkd"> 
+                                            Expert Keeper's Draft
+                                </label>
+                                <!--Constructed-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_const" value="constructed"> 
+                                                Constructed
+                                </label>
+                                <!--Casual Phantoms Draft-->
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_matchType" autocomplete="off" id="filter_match_pd" value="pd"> 
+                                            Phantom's Draft
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Match outcome filter row-->
+                    <div class="row">
+                        <h5 id="filter_title" class="card-title mr-3">Outcome: </h5>
+                        <div class="mr-3">
+                            <!--Matches Result filter buttons-->
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="filter_outcome" autocomplete="off" checked
+                                            id="filter_outcome_all" value="all"> 
+                                            All
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_outcome" autocomplete="off" id="filter_outcome_win"
+                                            value="win"> 
+                                            Win
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="filter_outcome" autocomplete="off" id="filter_outcome_lose"
+                                            value="lose"> 
+                                            Lose
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h5 id="filter_title" class="card-title float-right mr-3">Match Modes:</h5>
-
-                <div class="float-right mr-3">
-                    <!--Matches Result filter buttons-->
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                            <input type="radio" name="filter_outcome" autocomplete="off" checked
-                                   id="filter_outcome_all" value="all"> 
-                                   All
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_outcome" autocomplete="off" id="filter_outcome_win"
-                                   value="win"> 
-                                   Win
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="filter_outcome" autocomplete="off" id="filter_outcome_lose"
-                                   value="lose"> 
-                                   Lose
-                        </label>
-                    </div>
-                </div>
-                <h5 id="filter_title" class="card-title float-right mr-3">Filter: </h5>
-
-                <div class="table float-left">
-                    Wekll
-                </div>
-
                 <p class="card-text" id="output_data">
 
                 </p>
@@ -164,7 +227,10 @@
         <h3>What is this?</h3>
         This site will display all your current Artifact game history and statistics from the data you insert.
         I previously developed this as a <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory">WPF application</a> and now
-        have an online version!
+        have an online version! 
+        <br/>
+        <br/>
+        If you'd like to see the full source code, it's available online on my Github (or click <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory.Website">here</a>)
     </div>
 
     <div id="instruction" class="mt-3 hideondata">

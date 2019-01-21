@@ -7,9 +7,19 @@ $(() => {
 
     let filter_outcome = "all";
     let filter_matchType = "all";
+    let allMatches = [];
+
+    const setGlobalStats = (currentMatches) => {
+        var totalMatchesCount = currentMatches.length;
+        $("#life_totalGames").text(totalMatchesCount);
+        $("#life_totalGamesWR").text("15%");
+    }
+
+    const setStats = (currentMatches) => {
+        setGlobalStats(currentMatches);
+    }
 
     const regenerate_style = () => {
-
         let style_text = ".match_row { display: none; } ";
         if (filter_outcome === "win") 
         {
@@ -83,10 +93,8 @@ $(() => {
             }     
         }
 
-        
-
-        
         $("#filter_style").text(style_text);
+        setStats(allMatches);
     };
     regenerate_style();
 
@@ -117,7 +125,7 @@ $(() => {
         const data = raw_data.split(",");
         const decoded = decodeURI(data[0]);
         const name = decoded.split('|')[1];
-        $("#output_title").append(`<h2>${name}'s reported data</h2>`);
+        $("#output_title").append(`<h2>${name}'s game history</h2>`);
         const $table = $(`<table class="table table-striped table-sm"></table>`);
         const $tbody = $(`<tbody></table>`);
         $("#output_data").append($table);
@@ -239,6 +247,33 @@ $(() => {
             if(last_row_id === match_id){
                 return;
             }
+
+            var match = new Object();
+            match.id = match_id;
+            match.mode = match_mode;
+            match.startTime = start_time;
+            match.duration = duration;
+            match.serverVersion = server_version;
+            match.outcome = match_outcome;
+            match.totalTurns = total_turns;
+            match.startTime = start_time;
+            match.team = team;
+            match.flags = flags;
+            match.tower1 = tower1;
+            match.tower2 = tower2;
+            match.tower3 = tower3;
+            match.ancient = ancient;
+            match.gameClock = game_clock;
+            match.hero1 = hero_1;
+            match.hero2 = hero_2;
+            match.hero3 = hero_3;
+            match.hero4 = hero_4;
+            match.hero5 = hero_5;
+            match.gauntletType = gauntlet_type;
+            match.deckCode = deck_code;
+
+            /*Add to list*/
+            allMatches.push(match);
 
             let accountName = decodeURI(account_id);
             let matchMode = modeToDisplayName(match_mode);
@@ -368,7 +403,6 @@ $(() => {
         {
             if (!row) 
             {
-                // debugger;
                 if (i < data.length - 1) 
                 {
                     setTimeout(() => {
@@ -437,13 +471,16 @@ $(() => {
                     gauntlet_type,
                     deck_code,
                 });
-
-            setTimeout(() => { 
-                processHistory(data[i + 1], i + 1); 
-            }, 1);
         }
 
-        // debugger;
-        processHistory(data[0], 0);
+        const processData = (data) => {
+            for(var i = 0; i < data.length; i++){
+                processHistory(data[i], i);
+            }
+        }
+
+        processData(data);
+        /*Regen style and stats after finished*/
+        regenerate_style();
     }
 });
