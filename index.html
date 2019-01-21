@@ -57,14 +57,17 @@
 <div class="container">
     <div class="page-header">
         <h1>Artifact Game History </h1>
-        <h3>Your current Artifact game history</h3>
-        <!--Header buttons-->
+        <h3>View your Artifact game history</h3>
         <!--Github Buttons, View, Star & Follow-->
         <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-size="large" aria-label="View JoshLmao/ArtifactAPI.MatchHistory on GitHub">View on Github</a>
-        <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-icon="octicon-star" data-size="large" aria-label="Star JoshLmao/ArtifactAPI.MatchHistory on GitHub">Star</a>
-        <a class="github-button" href="https://github.com/JoshLmao" data-size="large" aria-label="Follow @JoshLmao on GitHub">Follow</a>
-        <!--Twitter follow button-->
-        <a class="twitter-follow-button" href="https://twitter.com/JoshLmao" data-size="large" data-show-count="false" data-show-screen-name="false">Follow</a>
+        <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-icon="octicon-star" data-size="large" aria-label="Star JoshLmao/ArtifactAPI.MatchHistory on GitHub">Star</a>     
+        <div class="mr-2 float-right">
+            <!--Twitter follow button-->
+            <a class="twitter-follow-button" href="https://twitter.com/JoshLmao" data-size="large" data-show-count="false" data-show-screen-name="false">Follow</a>
+        </div>
+        <div class="mr-2 float-right">
+            <a class="github-button" href="https://github.com/JoshLmao" data-size="large" aria-label="Follow @JoshLmao on GitHub">Follow</a>
+        </div>
     </div>
     <hr/>
 
@@ -375,8 +378,14 @@
         I previously developed this as a <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory">WPF application</a> and now
         have an online version! 
         <br/>
-        <br/>
         If you'd like to see the full source code, it's available online on my Github (or click <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory.Website">here</a>)
+    </div>
+
+    <div class="mt-3 hideondata">
+        <h3>How does it work?</h3>
+        Simple! The javascript down below is used to scrap all your game data from your webpage and then redirects you to a page on this site to view it all and the stats.
+        The script builds the data into a format that can be deconstructed easily and then simply tells your browser to come back to this url and adds all your data on the end.
+        The data never leaves your browser and has aboslutely no chance of being stolen. 😉
     </div>
 
     <div id="instruction" class="mt-3 hideondata">
@@ -412,8 +421,27 @@
         </span>
     </div>
 
+    <div class="mt-3 hideondata">
+        <h3>Thank you!</h3>
+        Finally, thank you for using this! If you appreciate what I do, then please consider following me on Twitter (<a href="https://twitter.com/JoshLmao">@JoshLmao</a>), 
+        or on <a href="https://github.com/JoshLmao">Github</a> 
+        <br/>
+        Or please consider supporting me and buying me a coffee (or two!) 😊
+        <br/>
+        <div class="row mt-2">
+            <div class="col-sm text-right">
+                <a href="https://ko-fi.com/joshlmao">
+                    <img src="images/kofiDonateBtn.png" alt="KoFiDonate.png" height="50">
+                </a>
+            </div>
+            <div class="col-sm text-left">
+                <a href="https://paypal.me/ijoshlmao?locale.x=en_GB" >
+                    <img src="images/donateBtn.png" height="50">
+                </a>
+            </div>
+        </div>
+    </div>
     <hr/>
-
     <div class="mt-3 text-center text-muted">
         <div>by <a href="https://github.com/joshlmao">@joshlmao</a></div>
         <div>Code derived from <a href="https://github.com/bongikairu">@bongikairu</a></div>
