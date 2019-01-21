@@ -23,140 +23,48 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ArtifactHistory</title>
+    <title>Artifact Game History | JoshLmao</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://pro.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-ncMWtRMSOo+cLmfdaa6vmMGzBJKysBDF9tq5YK1MAnAjcyipdW2vgTS1jOntY4fs" crossorigin="anonymous"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/superhero/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-fiZOWGBt79dIbkt852eb24nKPxYOvAgtp4v4IUFozlwV/WkvlilK1oTVfPorZdV4" crossorigin="anonymous">
-    <style>
-        body {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            background:#464646;
-        }
-
-        #filter_title {
-            margin-top: 4px;
-        }
-
-        .table th, .table td {
-            border-top: 1px solid #dee2e642;
-        }
-
-        .card {
-            background: #1c2127;
-        }
-
-        .win {
-            color: #5cb85c;
-        }
-
-        .lose {
-            color: #d9534f;
-        }
-
-        .score_k {
-            color: #5cb85c;
-        }
-
-        .score_d {
-            color: #d9534f;
-        }
-
-        .score_a {
-            color: #f0ad4e;
-        }
-
-        .kda_spacer {
-            margin: 0 4px;
-        }
-
-        .commend .svg-inline--fa, .report .svg-inline--fa {
-            margin-right: 0.3em;
-        }
-
-        td.summary {
-            padding-bottom: 2rem;
-        }
-
-        .summary hr {
-            margin: 0.5rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .container {
-            max-width: 1400px;
-        }
-
-        .winDiv {
-            height: 50px;
-            width: 5px;
-            background-color: lightgreen;
-            margin-right: 0%;
-            float: left;
-        }
-
-        .loseDiv {
-            height: 50px;
-            width: 5px;
-            background-color: crimson;
-            margin-right: 0%;
-            float: left;
-        }
-
-        .horizontalStackPanel{
-            display: inline;
-        }
-
-        .buildingContainer {
-            height: 100%;
-            width: 100%;
-            font-size: 0;
-        }
-
-        .element {
-            display: inline-block;
-            *display: inline;
-            vertical-align: 0%;
-            font-size: 12px;
-        }
-
-        #bElement {
-            display: inline-block;
-            *display: inline;
-            vertical-align: middle;
-            font-size: 12px;
-            width: 35px;
-        }
-
-        #bElementText{
-            display: inline-block;
-            *display: inline;
-            vertical-align: 0%;
-            font-size: 12px;
-            width: 25px;
-        }
-
-        #heroIcon {
-            display: inline-block;
-            vertical-align: top;
-            font-size: 12px;
-            width: 40px;
-            margin-right: 1em;
-        }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-F7cPHYSdE3FzBKvdxDKyFow9Y28Yq7KGHQOKpOI+rwc8s6jJnp///mpEJAib2EM6" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Github Buttons-->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--Twitter-->
+    <script>window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+          
+            return t;
+          }(document, "script", "twitter-wjs"));</script>
     <style id="filter_style">
 
     </style>
 </head>
-
 <body>
 
 <div class="container">
-
-    <h1>ArtifactHistory</h1>
-    <h2>Your current Artifact game history</h2>
-
+    <div class="page-header">
+        <h1>Artifact Game History </h1>
+        <h3>Your current Artifact game history</h3>
+        <!--Header buttons-->
+        <!--Github Buttons, View, Star & Follow-->
+        <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-size="large" aria-label="View JoshLmao/ArtifactAPI.MatchHistory on GitHub">View on Github</a>
+        <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-icon="octicon-star" data-size="large" aria-label="Star JoshLmao/ArtifactAPI.MatchHistory on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/JoshLmao" data-size="large" aria-label="Follow @JoshLmao on GitHub">Follow</a>
+        <!--Twitter follow button-->
+        <a class="twitter-follow-button" href="https://twitter.com/JoshLmao" data-size="large" data-show-count="false" data-show-screen-name="false">Follow</a>
+    </div>
     <hr/>
 
     <div id="output" style="display: none" class="mt-3">
@@ -237,6 +145,11 @@
                     </div>
                 </div>
                 <h5 id="filter_title" class="card-title float-right mr-3">Filter: </h5>
+
+                <div class="table float-left">
+                    Wekll
+                </div>
+
                 <p class="card-text" id="output_data">
 
                 </p>
@@ -263,7 +176,7 @@
             <li>
                 <div>Type <b>javascript:</b> into your url and paste the following code after it
                 </div>
-                <textarea  id="script_box" class="form-control" readonly style="color: white;">(()=>{let matchIds=[];const read_data=()=>{const player_name=document.getElementsByClassName("profile_small_header_name")[0].children[0].textContent;const row_list=document.getElementById("personaldata_elements_container").querySelectorAll("tr");let all_output="";for(let i=1;i<row_list.length;i++){const col_list=row_list[i].querySelectorAll("td");let output="";for(let j=0;j<col_list.length;j++){if(j==0){if(!matchIds.includes(col_list[j].textContent)){matchIds.push(col_list[j].textContent)}else{break}}
+                <textarea id="script_box" class="form-control textAreaStyle" readonly>(()=>{let matchIds=[];const read_data=()=>{const player_name=document.getElementsByClassName("profile_small_header_name")[0].children[0].textContent;const row_list=document.getElementById("personaldata_elements_container").querySelectorAll("tr");let all_output="";for(let i=1;i<row_list.length;i++){const col_list=row_list[i].querySelectorAll("td");let output="";for(let j=0;j<col_list.length;j++){if(j==0){if(!matchIds.includes(col_list[j].textContent)){matchIds.push(col_list[j].textContent)}else{break}}
                     output+=col_list[j].textContent+(j==col_list.length-1?"":"|")}
                     if(output!="")
                     all_output+=output+(i==row_list.length-1?"":",")}
@@ -276,11 +189,14 @@
         </ol>
     </div>
 
-    <div class="mt-3">
+    <div class="mt-3 hideondata">
         <h3>Github Repository</h3>
         <span>
             If you're interested in how this works, want to download the source code or help fix issues, check out the repo!
-            <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory">https://github.com/JoshLmao/ArtifactAPI.MatchHistory</a>
+            <br/>
+            WPF App: <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory">https://github.com/JoshLmao/ArtifactAPI.MatchHistory</a>
+            <br/>
+            Website: <a href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory.Website">https://github.com/JoshLmao/ArtifactAPI.MatchHistory.Website</a>
         </span>
     </div>
 
