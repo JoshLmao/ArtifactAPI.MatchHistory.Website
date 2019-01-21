@@ -47,9 +47,29 @@ $(() => {
         var dWR = statistics.getTotalWinRate(allDire);
         setStat(`#${prefix}_dGames`, allDire.length);
         setStat(`#${prefix}_dWR`, dWR);
+
+        var mostPickedHero = statistics.getMostPickedHero(matches);
+        setStat(`#${prefix}_mph`, mostPickedHero.hero);
+        setStat(`#${prefix}_mphpa`, mostPickedHero.pickAmount);
+
+        var mostTurns = statistics.getMostTurns(matches);
+        setStat(`#${prefix}_rec_turns_val`, mostTurns.turns);
+        setStat(`#${prefix}_rec_turns_id`, mostTurns.id);
+
+        var shortestGame = statistics.getShortestGame(matches);
+        setStat(`#${prefix}_rec_SG_Time`, shortestGame.time);
+        setStat(`#${prefix}_rec_SG_ID`, shortestGame.id);
+
+        var longestGame = statistics.getLongestGame(matches);
+        setStat(`#${prefix}_rec_LG_Time`, longestGame.time);
+        setStat(`#${prefix}_rec_LG_ID`, longestGame.id);
     }
 
     const setStats = (currentMatches) => {
+        if( currentMatches.length == 0 ) {
+            return;
+        }
+
         setGlobalStats(currentMatches);
 
         var casualMatches = statistics.getCasualMatches(currentMatches);
