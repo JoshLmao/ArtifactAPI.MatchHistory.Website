@@ -1,5 +1,4 @@
 $(() => {
-
     /*Select all script text when selecting text area*/
     $("#script_box").click(() => {
         $("#script_box").select();
@@ -9,14 +8,42 @@ $(() => {
     let filter_matchType = "all";
     let allMatches = [];
 
+    const setStat = (statId, stat) => {
+        $(statId).text(stat);
+    }
+
     const setGlobalStats = (currentMatches) => {
         var totalMatchesCount = currentMatches.length;
-        $("#life_totalGames").text(totalMatchesCount);
-        $("#life_totalGamesWR").text("15%");
+        var totalMatchesWinRate = statistics.getTotalWinRate(currentMatches);
+        setStat("#life_totalGames", totalMatchesCount);
+        setStat("#life_totalGamesWR", totalMatchesWinRate);
+
+        var totalMMGames = statistics.getMMGamesCount(currentMatches);
+        var totalMMWonGames = statistics.getMatchmakingWinRate(currentMatches);
+        setStat("#life_totalMM", totalMMGames);
+        setStat("#life_totalMMWR", totalMMWonGames);
+    }
+
+    const setCasualStats = (casualMatches) => {
+        var casualWinRate = statistics.getTotalWinRate(casualMatches);
+        setStat("#cas_totalGames", casualMatches.length);
+        setStat("#cas_totalWR", casualWinRate);
+    }
+
+    const setExpertStats = (expertMatches) => {
+        var totalExpertCount = expertMatches.length;
+        setStat("#exp_totalGames", totalExpertCount);
+        setStat("#exp_totalWR", "3");
     }
 
     const setStats = (currentMatches) => {
         setGlobalStats(currentMatches);
+
+        var casualMatches = statistics.getCasualMatches(currentMatches);
+        setCasualStats(casualMatches);
+
+        var expertMatches = statistics.getExpertMatches(currentMatches);
+        setExpertStats(expertMatches);
     }
 
     const regenerate_style = () => {

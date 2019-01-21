@@ -27,7 +27,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://pro.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-ncMWtRMSOo+cLmfdaa6vmMGzBJKysBDF9tq5YK1MAnAjcyipdW2vgTS1jOntY4fs" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-F7cPHYSdE3FzBKvdxDKyFow9Y28Yq7KGHQOKpOI+rwc8s6jJnp///mpEJAib2EM6" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Styling-->
+    <link rel="stylesheet" type="text/css" href="css/style.css"></link>
     <!--Github Buttons-->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!--Twitter-->
@@ -94,8 +95,8 @@
                                 </tr>
                                 <tr>
                                     <td>Matchmaking</td>
-                                    <td>12</td>
-                                    <td>0%</td>
+                                    <td id="life_totalMM">12</td>
+                                    <td id="life_totalMMWR">0%</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -112,8 +113,8 @@
                                 </thead>
                                 <tbody>
                                     <td>Total Games</td>
-                                    <td>22</td>
-                                    <td>0%</td>
+                                    <td id="cas_totalGames">22</td>
+                                    <td id="cas_totalWR">0%</td>
                                 </tbody>
                             </table>
                         </div>
@@ -127,8 +128,8 @@
                                 </thead>
                                 <tbody>
                                     <td>Total Games</td>
-                                    <td>22</td>
-                                    <td>0%</td>
+                                    <td id="exp_totalGames">22</td>
+                                    <td id="exp_totalWR">0%</td>
                                 </tbody>
                             </table>
                         </div>
@@ -277,5 +278,6 @@
 
 </body>
 
+<script src="js/stats.js"></script>
 <script src="analyzeData.js"></script>
 </html>
