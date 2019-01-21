@@ -85,6 +85,37 @@ statistics.getMatchTypeWinRate = function (matches, typeNumber) {
     return statistics.getPercent(wonMatches, matchCount);
 }
 
+statistics.getGauntletTypeGames = function (matches, gauntletNumber) {
+    var allGauntletGames = [ ];
+    for ( var i = 0; i < matches.length; i++ ) { 
+        if ( matches[i].mode == "3" ) {
+            //Is a gauntlet match
+            if ( matches[i].gauntletType == gauntletNumber ) {
+                allGauntletGames.push(matches[i]);
+            }
+        }
+    }
+    return allGauntletGames;
+}
+
+statistics.getGauntletTypeWinRate = function (matches, gauntletNumber) {
+    var matchCount = 0;
+    var wonMatches = 0;
+    for ( var i = 0; i < matches.length; i++ ) {
+        if ( matches[i].mode == "3" ) { 
+            //is a gauntlet match
+            if ( matches[i].gauntletType == gauntletNumber ) {
+                //is matching gauntlet type
+                matchCount++;
+                if ( matches[i].outcome == matches[i].team ) {
+                    wonMatches++;
+                }
+            }
+        }
+    }
+    return statistics.getPercent(wonMatches, matchCount);
+}
+
 statistics.getTeamGames = function (matches, team) {
     var teamGames = [];
     for( var i = 0; i < matches.length; i++ ) {

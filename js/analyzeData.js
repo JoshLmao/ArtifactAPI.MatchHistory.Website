@@ -31,6 +31,46 @@ $(() => {
         var allBotsWR = statistics.getMatchTypeWinRate(allBots, "8");
         setStat("#life_totalBM", allBots.length);
         setStat("#life_totalBMWR", allBotsWR);
+
+        var allCTA = statistics.getGauntletTypeGames(currentMatches, "5");
+        var allCTAwr = statistics.getGauntletTypeWinRate(allCTA, "5");
+        setStat("#life_totalCTA", allCTA.length);
+        setStat("#life_totalCTAWR", allCTAwr);
+
+        var allConst = statistics.getGauntletTypeGames(currentMatches, "10");
+        var allConstwr = statistics.getGauntletTypeWinRate(allConst, "10");
+        setStat("#life_totalConst", allConst.length);
+        setStat("#life_totalConstWR", allConstwr);
+
+        var allPD = statistics.getGauntletTypeGames(currentMatches, "11");
+        var allPDwr = statistics.getGauntletTypeWinRate(allPD, "11");
+        setStat("#life_totalPD", allPD.length);
+        setStat("#life_totalPDWR", allPDwr);
+
+        var allEConst = statistics.getGauntletTypeGames(currentMatches, "7");
+        var allEConstWR = statistics.getGauntletTypeWinRate(allEConst, "7");
+        setStat("#life_totalEConst", allEConst.length);
+        setStat("#life_totalEConstWR", allEConstWR);
+
+        var allEPD = statistics.getGauntletTypeGames(currentMatches, "8");
+        var allEPDWR = statistics.getGauntletTypeWinRate(allEPD, "8");
+        setStat("#life_totalEPD", allEPD.length);
+        setStat("#life_totalEPDWR", allEPDWR);
+
+        var allKD = statistics.getGauntletTypeGames(currentMatches, "9");
+        var allKDWR = statistics.getGauntletTypeWinRate(allKD, "9");
+        setStat("#life_totalKD", allKD.length);
+        setStat("#life_totalKDWR", allKDWR);
+
+        var allRadiant = statistics.getTeamGames(currentMatches, "0");
+        var rWR = statistics.getTotalWinRate(allRadiant);
+        setStat(`#life_rGames`, allRadiant.length);
+        setStat(`#life_rWR`, rWR);
+
+        var allDire = statistics.getTeamGames(currentMatches, "1");
+        var dWR = statistics.getTotalWinRate(allDire);
+        setStat(`#life_dGames`, allDire.length);
+        setStat(`#life_dWR`, dWR); 
     }
 
     const setSharedStats = (matches, prefix) => {
