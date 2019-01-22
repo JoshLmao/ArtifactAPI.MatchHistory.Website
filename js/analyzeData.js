@@ -4,6 +4,11 @@ $(() => {
         $("#script_box").select();
     });
 
+    $("#exampleDataBtn").click(() => {
+        var data = "863978|JoshLmao|2|00:05:00|250|1|7|1/22/2019 11:20:02 AM|155|0|0|12|24|20|80|123|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,960895|JoshLmao|2|00:25:00|250|-1|3|1/22/2019 11:20:02 AM|155|0|0|3|4|39|80|562|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,896903|JoshLmao|8|00:03:00|250|0|4|1/22/2019 11:20:02 AM|155|0|0|29|32|27|80|674|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,616590|JoshLmao|3|00:13:00|250|-1|8|1/22/2019 11:20:02 AM|155|0|0|38|30|24|80|249|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,114664|JoshLmao|8|00:23:00|250|0|0|1/22/2019 11:20:02 AM|155|0|0|34|20|26|80|378|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,706226|JoshLmao|8|00:24:00|250|0|9|1/22/2019 11:20:02 AM|155|0|0|11|6|36|80|118|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,878804|JoshLmao|2|00:06:00|250|1|0|1/22/2019 11:20:02 AM|155|0|0|11|19|6|80|12|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,606211|JoshLmao|3|00:19:00|250|1|2|1/22/2019 11:20:02 AM|155|0|0|38|37|20|80|65|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,952171|JoshLmao|8|00:29:00|250|1|3|1/22/2019 11:20:02 AM|155|0|0|7|29|34|80|196|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,85330|JoshLmao|2|00:25:00|250|-1|9|1/22/2019 11:20:02 AM|155|0|0|21|33|8|80|490|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,762726|JoshLmao|8|00:01:00|250|0|4|1/22/2019 11:20:02 AM|155|0|0|14|36|8|80|318|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,773912|JoshLmao|3|00:29:00|250|1|3|1/22/2019 11:20:02 AM|155|0|0|29|6|24|80|342|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,128353|JoshLmao|8|00:01:00|250|-1|0|1/22/2019 11:20:02 AM|155|0|0|29|6|16|80|466|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,976433|JoshLmao|3|00:21:00|250|1|8|1/22/2019 11:20:02 AM|155|0|0|34|28|24|80|787|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,223197|JoshLmao|2|00:04:00|250|0|3|1/22/2019 11:20:02 AM|155|0|0|6|14|38|80|41|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,157183|JoshLmao|2|00:09:00|250|1|0|1/22/2019 11:20:02 AM|155|0|0|14|33|18|80|376|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,89682|JoshLmao|3|00:25:00|250|0|4|1/22/2019 11:20:02 AM|155|0|0|20|27|21|80|409|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,405357|JoshLmao|2|00:12:00|250|0|0|1/22/2019 11:20:02 AM|155|0|0|0|21|37|29|511|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,767877|JoshLmao|8|00:02:00|250|1|6|1/22/2019 11:20:02 AM|155|0|0|21|13|37|80|768|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,106215|JoshLmao|8|00:24:00|250|1|5|1/22/2019 11:20:02 AM|155|0|0|29|10|38|80|737|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,813681|JoshLmao|3|00:12:00|250|0|4|1/22/2019 11:20:02 AM|155|0|0|39|8|28|80|555|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,302172|JoshLmao|2|00:02:00|250|-1|7|1/22/2019 11:20:02 AM|155|0|0|7|18|9|80|730|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,327870|JoshLmao|3|00:00:00|250|-1|7|1/22/2019 11:20:02 AM|155|0|0|32|35|34|80|562|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,271843|JoshLmao|3|00:02:00|250|0|7|1/22/2019 11:20:02 AM|155|0|0|16|0|2|23|419|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_,752702|JoshLmao|8|00:22:00|250|-1|7|1/22/2019 11:20:02 AM|155|0|0|17|27|39|80|32|Sorla Khan|Winter Wyvern|Luna|Zeus|Enchantress|ADCJbIGJ7kCwgSNScMFeF0CrN0BhmQBpQEmAQNBEiMBjbEBoAGtAUtCIEVjb24_";
+        window.location = "https://artifacthistory.joshlmao.com/#" + data;
+    })
+
     let filter_outcome = "all";
     let filter_matchType = "all";
     let allMatches = [];
@@ -139,7 +144,17 @@ $(() => {
                 style_text += `.outcome_win.match_contructed { display: table-row; } `;
             } else if ( filter_matchType == "pd" ) {
                 style_text += `.outcome_win.match_phantomDraft { display: table-row; } `;
-            } 
+            } else {
+                style_text += `.outcome_win.match_matchmaking { display: table-row; } `;
+                style_text += `.outcome_win.match_bots { display: table-row; } `;
+                style_text += `.outcome_win.match_unknown { display: table-row; } `;
+                style_text += `.outcome_win.match_callToArms { display: table-row; } `;
+                style_text += `.outcome_win.match_expertC { display: table-row; } `;
+                style_text += `.outcome_win.match_expertPD { display: table-row; } `;
+                style_text += `.outcome_win.match_expertKD { display: table-row; } `;
+                style_text += `.outcome_win.match_contructed { display: table-row; } `;
+                style_text += `.outcome_win.match_phantomDraft { display: table-row; } `;
+            }
         } 
         else if (filter_outcome === "lose") 
         {
@@ -159,10 +174,21 @@ $(() => {
                 style_text += `.outcome_lose.match_contructed { display: table-row; } `;
             } else if ( filter_matchType == "pd" ) {
                 style_text += `.outcome_lose.match_phantomDraft { display: table-row; } `;
+            } else {
+                style_text += `.outcome_lose.match_matchmaking { display: table-row; } `;
+                style_text += `.outcome_lose.match_bots { display: table-row; } `;
+                style_text += `.outcome_lose.match_unknown { display: table-row; } `;
+                style_text += `.outcome_lose.match_callToArms { display: table-row; } `;
+                style_text += `.outcome_lose.match_expertC { display: table-row; } `;
+                style_text += `.outcome_lose.match_expertPD { display: table-row; } `;
+                style_text += `.outcome_lose.match_expertKD { display: table-row; } `;
+                style_text += `.outcome_lose.match_contructed { display: table-row; } `;
+                style_text += `.outcome_lose.match_phantomDraft { display: table-row; } `;
             }
         } 
         else 
         {
+
             if( filter_matchType == "matchmaking" ) {
                 style_text += `.match_matchmaking { display: table-row; } `;
             } else if ( filter_matchType == "botMatch") {
@@ -179,8 +205,7 @@ $(() => {
                 style_text += `.match_contructed { display: table-row; } `;
             } else if ( filter_matchType == "pd" ) {
                 style_text += `.match_phantomDraft { display: table-row; } `;
-            }    
-            else {
+            } else {
                 style_text += `.match_matchmaking { display: table-row; } `;
                 style_text += `.match_bots { display: table-row; } `;
                 style_text += `.match_unknown { display: table-row; } `;
@@ -190,7 +215,7 @@ $(() => {
                 style_text += `.match_expertKD { display: table-row; } `;
                 style_text += `.match_contructed { display: table-row; } `;
                 style_text += `.match_phantomDraft { display: table-row; } `;
-            }     
+            }
         }
 
         $("#filter_style").text(style_text);
@@ -210,7 +235,6 @@ $(() => {
     $("input[name=filter_matchType]").click(function () {
         const val = $(this).val();
         filter_matchType = val;
-        console.log(filter_matchType);
         $(this).parent().parent().children().removeClass("active");
         $(this).parent().addClass("active");
         regenerate_style();
@@ -484,38 +508,8 @@ $(() => {
             $tbody.append($tr);
         };
 
-        const formatDuration = (seconds) => {
-            let leftover = seconds;
-            let output = "";
-            if (leftover > 3600) {
-                output += Math.floor(leftover / 3600) + ":";
-                leftover = leftover % 3600;
-            }
-            let minute = Math.floor(leftover / 60);
-            let second = leftover % 60;
-            if (minute < 10) minute = `0${minute}`;
-            if (second < 10) second = `0${second}`;
-            output += `${minute}:${second}`;
-            return output;
-        };
-
         const processHistory = (row, i) => 
         {
-            if (!row) 
-            {
-                if (i < data.length - 1) 
-                {
-                    setTimeout(() => {
-                        processHistory(data[i + 1], i + 1);
-                    }, 1); // throttle to 1 request/sec
-                } 
-                else 
-                {
-                    $("#loading").hide();
-                }
-                return;
-            }
-
             /*Parse a row of data into vars*/
             const parsed_row = row.split("|");
             const match_id = parsed_row[0];
@@ -580,6 +574,8 @@ $(() => {
         }
 
         processData(data);
+        /* Hide the loading text*/
+        $("#loading").hide();
         /*Regen style and stats after finished*/
         regenerate_style();
     }
