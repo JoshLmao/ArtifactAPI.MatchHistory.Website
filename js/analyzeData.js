@@ -275,7 +275,7 @@ $(() => {
         }
 
         const getTowerImg = (towerHealth) => {
-            return towerHealth === "0" ? "images/tower_destroyed.png" :"images/tower.png";
+            return towerHealth === "0" ? "images/tower_destroyed.png" : "images/tower.png";
         }
 
         const getHeroIcon = (heroName) => {
@@ -283,7 +283,7 @@ $(() => {
             if(heroName === ""){
                 return "images/unknown_hero.png";
             } else {
-                return `icons/hero/${clean}.png`;
+                return `heroes/${clean}.png`;
             }
         }
 
