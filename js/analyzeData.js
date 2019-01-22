@@ -17,6 +17,8 @@ $(() => {
     let filter_outcome = "all";
     let filter_matchType = "all";
     let allMatches = [];
+    let last_row_id = "";
+    const $tbody = $(`<tbody></table>`);;
 
     const setStat = (statId, stat) => {
         $(statId).text(stat);
@@ -263,7 +265,6 @@ $(() => {
     }
 
     const getHeroIcon = (heroName) => {
-        debugger;
         if(heroName == "" || heroName == 0 || heroName === null ){
             return "images/unknown_hero.png";
         } else {
@@ -579,13 +580,8 @@ $(() => {
             const name = decoded.split('|')[1];
             $("#output_title").append(`<h2>${name}'s game history</h2>`);
             const $table = $(`<table class="table table-striped table-sm"></table>`);
-            const $tbody = $(`<tbody></table>`);
             $("#output_data").append($table);
             $table.append($tbody);
-    
-            let last_row_id = "";
-    
-            
     
             processData(data);
             /* Hide the loading text*/
