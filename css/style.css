@@ -67,7 +67,7 @@ td.summary {
 }
 
 .winDiv {
-    height: 50px;
+    min-height: 50px;
     width: 5px;
     background-color: lightgreen;
     margin-right: 0%;
@@ -75,7 +75,7 @@ td.summary {
 }
 
 .loseDiv {
-    height: 50px;
+    min-height: 50px;
     width: 5px;
     background-color: crimson;
     margin-right: 0%;
