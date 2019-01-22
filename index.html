@@ -63,7 +63,7 @@
         <a class="github-button" href="https://github.com/JoshLmao/ArtifactAPI.MatchHistory" data-icon="octicon-star" data-size="large" aria-label="Star JoshLmao/ArtifactAPI.MatchHistory on GitHub">Star</a>     
         <div class="mr-2 float-right">
             <!--Twitter follow button-->
-            <a class="twitter-follow-button" href="https://twitter.com/JoshLmao" data-size="large" data-show-count="false" data-show-screen-name="false">Follow</a>
+            <a class="twitter-follow-button" href="https://twitter.com/JoshLmao" data-size="large" data-show-count="false">Follow</a>
         </div>
         <div class="mr-2 float-right">
             <a class="github-button" href="https://github.com/JoshLmao" data-size="large" aria-label="Follow @JoshLmao on GitHub">Follow</a>
@@ -77,10 +77,15 @@
                 <div class="container-fluid">
                     <!--Title row-->
                     <div class="row">
-                        <div class="card-title float-left" id="output_title"></div>
+                        <div class="col-sm">
+                                <div class="card-title float-left" id="output_title"></div>
+                        </div>
+                        <div class="col-sm">
+                            <button class="btn btn-primary float-right" id="btnResetData">Reset Data</button>
+                        </div>
                     </div>
                     <!--Stats row-->
-                    <div class="row">
+                    <div class="row mt-1">
                         <!--Lifetime stats column-->
                         <div class="col-sm">
                             <h4 class="font-weight-bold">Lifetime Stats</h4>
