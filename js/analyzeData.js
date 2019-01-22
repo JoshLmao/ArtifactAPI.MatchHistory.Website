@@ -279,10 +279,11 @@ $(() => {
         }
 
         const getHeroIcon = (heroName) => {
-            var clean = heroName.replace(/%20/g, ' ');
-            if(heroName === ""){
+            debugger;
+            if(heroName == "" || heroName == 0 || heroName === null ){
                 return "images/unknown_hero.png";
             } else {
+                var clean = heroName.replace(/%20/g, ' ');
                 for ( var i = 0; i < heroesMap.heroesMap.length; i++ ) {
                     if ( heroesMap.heroesMap[i].HeroName === clean ) {
                         return heroesMap.heroesMap[i].Url;
