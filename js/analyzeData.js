@@ -403,7 +403,7 @@ $(() => {
         
         /*Get Gauntlet Mode display name & HTML*/
         let gauntletMode = getGauntletMode(gauntlet_type);
-        let gauntletModeHtml = gauntletMode != null ? `<div>${gauntletMode}</div>` : "";
+        let gauntletModeHtml = gauntletMode != null && match_mode == 3 ? `<div >${gauntletMode}</div>` : "";
         
         /*Determine if game was surrendered or not*/
         let flagsDisplayName = getFlagsToName(flags);
