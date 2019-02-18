@@ -265,7 +265,7 @@ $(() => {
     }
 
     const getHeroIcon = (heroName) => {
-        if(heroName == "" || heroName == 0 || heroName === null ){
+        if(heroName == "" || heroName == 0 || heroName === null || !heroName || heroName == undefined){
             return "images/unknown_hero.png";
         } else {
             var clean = heroName.replace(/%20/g, ' ');
@@ -416,11 +416,17 @@ $(() => {
         let ancientImg = ancient === "0" ? "images/ancient_destroyed.png" : "images/ancient.png";
 
         /* Get hero icons for heroes*/
-        let heroOneIcon = getHeroIcon(hero_1);
-        let heroTwoIcon = getHeroIcon(hero_2);
-        let heroThreeIcon = getHeroIcon(hero_3);
-        let heroFourIcon = getHeroIcon(hero_4);
-        let heroFiveIcon = getHeroIcon(hero_5);
+        var heroOneIcon, heroTwoIcon, heroThreeIcon, heroFourIcon, heroFiveIcon;
+        if(hero_1)
+            heroOneIcon = getHeroIcon(hero_1);
+        if(hero_2)
+            heroTwoIcon = getHeroIcon(hero_2);
+        if(hero_3)
+            heroThreeIcon = getHeroIcon(hero_3);
+        if(hero_4)
+            heroFourIcon = getHeroIcon(hero_4);
+        if(hero_5)
+            heroFiveIcon = getHeroIcon(hero_5);
 
         let teamName = teamToName(team);
         let totalTime = timeToDisplay(game_clock);
